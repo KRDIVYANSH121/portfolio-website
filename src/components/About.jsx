@@ -1,5 +1,6 @@
 import { useAdmin } from './AdminContext';
 import Editable from './Editable';
+import { motion } from 'framer-motion';
 
 export default function About() {
   const { portfolioData, isEditing } = useAdmin();
@@ -7,7 +8,13 @@ export default function About() {
 
   return (
     <section id="about" className="py-24 px-4 bg-card/50">
-      <div className="max-w-5xl mx-auto">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.7 }}
+        className="max-w-5xl mx-auto"
+      >
         <h2 className="text-3xl md:text-4xl font-bold text-text mb-12 flex items-center gap-4">
           <span className="w-8 h-[1px] bg-accent"></span>
           About Me
@@ -35,7 +42,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 import { useAdmin } from './AdminContext';
 import { Briefcase } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const ExperienceIcon = ({ icon }) => {
   const [error, setError] = useState(false);
@@ -60,7 +61,14 @@ export default function Experience() {
         ) : (
           <div className="space-y-12">
             {experience.map((job, index) => (
-              <div key={index} className="relative pl-8 md:pl-0">
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative pl-8 md:pl-0"
+              >
                 {/* Timeline line */}
                 <div className="hidden md:block absolute left-[50%] top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2"></div>
                 
@@ -68,11 +76,20 @@ export default function Experience() {
                   <div className="hidden md:block w-5/12"></div>
                   
                   {/* Timeline dot / Logo */}
-                  <div className="absolute left-0 md:left-1/2 w-8 h-8 rounded-full bg-bg border-2 border-accent -translate-x-1/2 flex items-center justify-center mt-1 md:mt-0 z-10 overflow-hidden">
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                    className="absolute left-0 md:left-1/2 w-8 h-8 rounded-full bg-bg border-2 border-accent -translate-x-1/2 flex items-center justify-center mt-1 md:mt-0 z-10 overflow-hidden"
+                  >
                     <ExperienceIcon icon={job.icon} />
-                  </div>
+                  </motion.div>
                   
-                  <div className="w-full md:w-5/12 bg-card border border-white/5 p-6 rounded-2xl relative hover:border-white/10 transition-colors">
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    className="w-full md:w-5/12 bg-card border border-white/5 p-6 rounded-2xl relative hover:border-white/10 transition-colors"
+                  >
                     <span className="text-accent font-mono text-sm mb-2 block">{job.dates}</span>
                     <h3 className="text-xl font-bold text-text">{job.role}</h3>
                     <h4 className="text-lg text-muted mb-4">{job.company}</h4>
@@ -84,9 +101,9 @@ export default function Experience() {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}

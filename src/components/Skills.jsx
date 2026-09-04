@@ -1,5 +1,6 @@
 import { useAdmin } from './AdminContext';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Skills() {
   const { portfolioData, isEditing, updateData } = useAdmin();
@@ -42,22 +43,30 @@ export default function Skills() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {skills.map((skillGroup) => (
-              <div key={skillGroup.category} className="bg-card border border-white/5 p-6 rounded-2xl">
+            {skills.map((skillGroup, index) => (
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                key={skillGroup.category} 
+                className="bg-card border border-white/5 p-6 rounded-2xl"
+              >
                 <h3 className="text-xl font-semibold text-text mb-6 pb-4 border-b border-white/10">
                   {skillGroup.category}
                 </h3>
                 <div className="flex flex-wrap gap-3">
-                  {skillGroup.items.map((item) => (
-                    <span 
+                  {skillGroup.items.map((item, i) => (
+                    <motion.span 
+                      whileHover={{ scale: 1.05 }}
                       key={item}
                       className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-muted hover:text-accent hover:border-accent/50 transition-colors"
                     >
                       {item}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}

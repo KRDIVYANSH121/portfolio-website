@@ -1,6 +1,7 @@
 import { useAdmin } from './AdminContext';
 import { GraduationCap } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Education() {
   const { portfolioData, isEditing, updateData } = useAdmin();
@@ -44,7 +45,14 @@ export default function Education() {
         ) : (
           <div className="space-y-6">
             {education.map((edu, index) => (
-              <div key={index} className="bg-card border border-white/5 p-8 rounded-2xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-card border border-white/5 p-8 rounded-2xl flex flex-col md:flex-row gap-6 items-start md:items-center justify-between"
+              >
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-[rgba(110,231,200,0.1)] flex items-center justify-center shrink-0">
                     <GraduationCap className="w-6 h-6 text-accent" />
@@ -58,7 +66,7 @@ export default function Education() {
                 <div className="text-accent font-mono text-sm shrink-0 md:text-right">
                   {edu.dates}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}

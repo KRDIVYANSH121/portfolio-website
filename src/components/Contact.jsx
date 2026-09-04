@@ -2,6 +2,7 @@ import { useAdmin } from './AdminContext';
 import Editable from './Editable';
 import { Mail, Send, Phone, Link2 } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa6';
+import { motion } from 'framer-motion';
 
 export default function Contact() {
   const { portfolioData, isEditing } = useAdmin();
@@ -21,7 +22,13 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 px-4 bg-bg">
-      <div className="max-w-4xl mx-auto text-center">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-4xl mx-auto text-center"
+      >
         <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
           Get In Touch
         </h2>
@@ -123,7 +130,7 @@ export default function Contact() {
             </button>
           </form>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
