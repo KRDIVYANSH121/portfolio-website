@@ -6,6 +6,7 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
+import NeuralBackground from './components/NeuralBackground';
 import { AdminProvider, useAdmin } from './components/AdminContext';
 import { Save, LogOut, Lock } from 'lucide-react';
 
@@ -64,7 +65,8 @@ function HiddenAdminTrigger() {
 function App() {
   return (
     <AdminProvider>
-      <div className="min-h-screen bg-bg text-text font-sans">
+      <div className="min-h-screen bg-bg text-text font-sans relative">
+        <NeuralBackground />
         <Navbar />
         <main>
           <Hero />
