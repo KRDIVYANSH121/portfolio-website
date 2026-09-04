@@ -13,8 +13,8 @@ export default function NeuralBackground() {
     canvas.width = width;
     canvas.height = height;
 
-    // Deep cyber-teal accent to match Tailwind config (accent color: #6ee7c8 / rgb(110, 231, 200))
-    const color = '110, 231, 200';
+    // High-tech Cloud vibe: Electric Blue/Cyan (#00f0ff / rgb(0, 240, 255))
+    const color = '0, 240, 255';
 
     const particles = [];
     const particleCount = Math.floor((width * height) / 10000); // Density of the network
