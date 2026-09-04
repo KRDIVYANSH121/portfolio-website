@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0e0f13;
+  --color-card: #16181f;
+  --color-accent: #6ee7c8;
+  --color-text: #eef1f6;
+  --color-muted: #9aa1ad;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@utility preserve-3d {
+  transform-style: preserve-3d;
+}
+@utility backface-hidden {
+  backface-visibility: hidden;
+}
+@utility perspective-1200 {
+  perspective: 1200px;
+}

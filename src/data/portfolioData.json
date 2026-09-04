@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "name": "K R DIVYANSH",
+    "title": "Aspiring DevSecOps Engineer",
+    "pitch": "A 2nd-year BTech CSE Core student at SRM University AP, passionate about building secure and scalable infrastructure.",
+    "resumeUrl": "#",
+    "contactUrl": "#contact"
+  },
+  "about": {
+    "bio": "I'm K R Divyansh, currently in my 2nd year pursuing a BTech in Computer Science and Engineering Core at SRM University AP. As an aspiring DevSecOps Engineer, I'm deeply interested in the intersection of development, security, and operations. I love exploring new technologies and building secure solutions.",
+    "image": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  "skills": [
+    {
+      "category": "Languages",
+      "items": ["JavaScript", "Python", "C++", "HTML", "CSS"]
+    },
+    {
+      "category": "Frameworks",
+      "items": ["React", "Node.js", "Express", "Tailwind CSS"]
+    },
+    {
+      "category": "Tools",
+      "items": ["Git", "Docker", "Linux", "Security Basics"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "p1",
+      "title": "Portfolio Analytics",
+      "description": "Interactive dashboard visualizing personal spending trends with live filtering and CSV export.",
+      "tech": ["React", "D3.js", "Node"],
+      "repoUrl": "#",
+      "liveUrl": "#",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "featured": true
+    },
+    {
+      "id": "p2",
+      "title": "Task Scheduler API",
+      "description": "Cron-based job scheduler with retry logic, built for a course project on distributed systems.",
+      "tech": ["Node.js", "Postgres"],
+      "repoUrl": "#",
+      "liveUrl": "#",
+      "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "featured": true
+    }
+  ],
+  "experience": [
+    {
+      "role": "Student & Learner",
+      "company": "SRM University AP",
+      "dates": "2024 - Present",
+      "achievements": [
+        "Actively exploring DevSecOps concepts, cloud architecture, and security protocols.",
+        "Building foundational knowledge in full-stack development and system operations."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "BTech Computer Science & Engineering Core",
+      "institution": "SRM University AP",
+      "dates": "Current (2nd Year)",
+      "coursework": "Data Structures, Algorithms, Object-Oriented Programming, Operating Systems"
+    }
+  ],
+  "contact": {
+    "email": "divyansh@example.com",
+    "phone": "+91 9535314539",
+    "github": "https://github.com/KRDIVYANSH121",
+    "linkedin": "https://www.linkedin.com/in/k-r-divyansh-66abb436a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    "instagram": "https://www.instagram.com/krdivyansh.dev?igsi=MWpjZ3htcmVieDR4dA==",
+    "youtube": "https://youtube.com/@krdivyansh-dev?si=Tb7rIBRDvI6mEHUa"
+  }
+}
