@@ -2,6 +2,22 @@ import { useAdmin } from './AdminContext';
 import { Briefcase } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
+const ExperienceIcon = ({ icon }) => {
+  const [error, setError] = useState(false);
+  
+  if (icon && !error) {
+    return (
+      <img 
+        src={icon} 
+        alt="Company logo" 
+        className="w-full h-full object-contain p-0.5 rounded-full bg-white"
+        onError={() => setError(true)}
+      />
+    );
+  }
+  return <Briefcase className="w-3 h-3 text-accent" />;
+};
+
 export default function Experience() {
   const { portfolioData, isEditing, updateData } = useAdmin();
   const { experience } = portfolioData;
@@ -38,7 +54,7 @@ export default function Experience() {
             <textarea 
               value={jsonText}
               onChange={handleJsonChange}
-              className="w-full h-[300px] bg-black/50 border border-accent/50 rounded p-4 font-mono text-sm focus:outline-none focus:border-accent"
+              className="w-full h-[500px] bg-black/50 border border-accent/50 rounded p-4 font-mono text-sm focus:outline-none focus:border-accent"
             />
           </div>
         ) : (
@@ -51,9 +67,9 @@ export default function Experience() {
                 <div className={`md:flex items-center justify-between w-full ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                   <div className="hidden md:block w-5/12"></div>
                   
-                  {/* Timeline dot */}
-                  <div className="absolute left-0 md:left-1/2 w-6 h-6 rounded-full bg-bg border-2 border-accent -translate-x-1/2 flex items-center justify-center mt-1.5 md:mt-0 z-10">
-                    <Briefcase className="w-3 h-3 text-accent" />
+                  {/* Timeline dot / Logo */}
+                  <div className="absolute left-0 md:left-1/2 w-8 h-8 rounded-full bg-bg border-2 border-accent -translate-x-1/2 flex items-center justify-center mt-1 md:mt-0 z-10 overflow-hidden">
+                    <ExperienceIcon icon={job.icon} />
                   </div>
                   
                   <div className="w-full md:w-5/12 bg-card border border-white/5 p-6 rounded-2xl relative hover:border-white/10 transition-colors">

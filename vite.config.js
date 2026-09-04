@@ -40,5 +40,6 @@ const saveJsonPlugin = () => {
 }
 
 export default defineConfig({
+  base: '/portfolio-website/',
   plugins: [react(), saveJsonPlugin()],
 })

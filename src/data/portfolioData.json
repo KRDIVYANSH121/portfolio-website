@@ -7,15 +7,17 @@
     "contactUrl": "#contact"
   },
   "about": {
-    "bio": "I'm K R Divyansh, currently in my 2nd year pursuing a BTech in Computer Science and Engineering Core at SRM University AP. As an aspiring DevSecOps Engineer, I'm deeply interested in the intersection of development, security, and operations. I love exploring new technologies and building secure solutions.",
-    "image": "/profile.jpg"
+    "bio": "I am a passionate 2nd year BTech CSE Core student at SRM University AP, with a strong focus on DevSecOps and cloud technologies. I enjoy building secure, scalable infrastructure and automating deployments to streamline the development lifecycle. Constantly learning and adapting to new challenges, I aim to bridge the gap between development and operations with a security-first mindset.",
+    "image": "profile.jpg"
   },
   "skills": [
     {
       "category": "Languages",
       "items": [
+        "Java",
         "JavaScript",
         "Python",
+        "C",
         "C++",
         "HTML",
         "CSS"
@@ -25,6 +27,7 @@
       "category": "Frameworks",
       "items": [
         "React",
+        "Google Cloud",
         "Node.js",
         "Express",
         "Tailwind CSS"
@@ -37,6 +40,16 @@
         "Docker",
         "Linux",
         "Security Basics"
+      ]
+    },
+    {
+      "category": "Spoken Languages",
+      "items": [
+        "English (Native)",
+        "Hindi (Professional)",
+        "Japanese (Elementary)",
+        "Kannada (Native)",
+        "Telugu (Professional)"
       ]
     }
   ],
@@ -71,13 +84,44 @@
   ],
   "experience": [
     {
-      "role": "Student & Learner",
-      "company": "SRM University AP",
-      "dates": "2024 - Present",
+      "role": "Founder",
+      "company": "OBVILIONIS Technologies",
+      "dates": "Aug 2026 - Present",
       "achievements": [
-        "Actively exploring DevSecOps concepts, cloud architecture, and security protocols.",
-        "Building foundational knowledge in full-stack development and system operations."
-      ]
+        "Start-ups Management",
+        "Operations Management"
+      ],
+      "icon": "obvilionis.png"
+    },
+    {
+      "role": "Member of Events Team",
+      "company": "SRM University AP ACM Student Chapter",
+      "dates": "Jan 2026 - Present",
+      "achievements": [
+        "Event Planning",
+        "Time Management"
+      ],
+      "icon": "acm.png"
+    },
+    {
+      "role": "Associate Member",
+      "company": "IEEE Student Branch SRM University AP",
+      "dates": "Mar 2026 - Present",
+      "achievements": [
+        "Event Planning",
+        "Time Management"
+      ],
+      "icon": "ieee.png"
+    },
+    {
+      "role": "Campus Ambassador",
+      "company": "Mosaique Pvt Ltd",
+      "dates": "Apr 2026 - Jun 2026",
+      "achievements": [
+        "Social Media",
+        "Social Media Communications"
+      ],
+      "icon": "mosaique.png"
     }
   ],
   "education": [
