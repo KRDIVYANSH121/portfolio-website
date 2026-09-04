@@ -7,31 +7,10 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import { AdminProvider, useAdmin } from './components/AdminContext';
-import { useEffect } from 'react';
-import { Save, LogIn, LogOut } from 'lucide-react';
+import { Save, LogOut, Lock } from 'lucide-react';
 
 function AdminControls() {
   const { isEditing, setIsEditing, saveChanges, hasChanges } = useAdmin();
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.ctrlKey && e.shiftKey && e.key === 'E') {
-        e.preventDefault();
-        if (!isEditing) {
-          const pwd = prompt('Enter admin password:');
-          if (pwd === 'admin123') {
-            setIsEditing(true);
-          } else if (pwd !== null) {
-            alert('Incorrect password');
-          }
-        } else {
-          setIsEditing(false);
-        }
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isEditing, setIsEditing]);
 
   if (!isEditing) return null;
 
@@ -57,6 +36,31 @@ function AdminControls() {
   );
 }
 
+function HiddenAdminTrigger() {
+  const { isEditing, setIsEditing } = useAdmin();
+  
+  if (isEditing) return null;
+
+  const handleTrigger = () => {
+    const pwd = prompt('Enter admin password:');
+    if (pwd === 'admin123') {
+      setIsEditing(true);
+    } else if (pwd !== null) {
+      alert('Incorrect password');
+    }
+  };
+
+  return (
+    <button 
+      onClick={handleTrigger}
+      className="inline-flex items-center justify-center p-2 rounded-full opacity-5 hover:opacity-100 transition-opacity ml-2 outline-none focus:outline-none"
+      title="Admin Login"
+    >
+      <Lock size={14} />
+    </button>
+  );
+}
+
 function App() {
   return (
     <AdminProvider>
@@ -72,9 +76,9 @@ function App() {
           <Contact />
         </main>
         
-        <footer className="py-8 text-center text-muted border-t border-white/5">
+        <footer className="py-8 text-center text-muted border-t border-white/5 flex items-center justify-center">
           <p>&copy; {new Date().getFullYear()} K R DIVYANSH. Built with React & Tailwind.</p>
-          <p className="text-xs opacity-50 mt-2">Press Ctrl+Shift+E to edit</p>
+          <HiddenAdminTrigger />
         </footer>
         
         <AdminControls />

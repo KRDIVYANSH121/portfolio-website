@@ -1,6 +1,6 @@
 import { useAdmin } from './AdminContext';
 import Editable from './Editable';
-import { Mail, Send, Phone } from 'lucide-react';
+import { Mail, Send, Phone, Link2 } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram, FaYoutube } from 'react-icons/fa6';
 
 export default function Contact() {
@@ -8,9 +8,15 @@ export default function Contact() {
   const { contact } = portfolioData;
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Thank you for your message! This is a demo form.');
-    e.target.reset();
+    // We only prevent default if Formspree is not configured
+    const isFormspreeConfigured = contact.formspreeEndpoint && !contact.formspreeEndpoint.includes("YOUR_ENDPOINT_HERE");
+    
+    if (!isFormspreeConfigured) {
+      e.preventDefault();
+      alert('Thank you for your message! (Formspree endpoint is not configured yet)');
+      e.target.reset();
+    }
+    // If formspree is configured, the browser will natively POST to the action URL
   };
 
   return (
@@ -83,23 +89,33 @@ export default function Contact() {
                   <label className="text-accent mb-1 flex items-center gap-2"><FaYoutube size={14}/> YouTube URL</label>
                   <Editable section="contact" field="youtube" />
                 </div>
+                <div className="flex flex-col mt-4 pt-4 border-t border-white/10">
+                  <label className="text-accent mb-1 flex items-center gap-2"><Link2 size={14}/> Formspree Endpoint</label>
+                  <p className="text-xs text-muted mb-2">Create a form at formspree.io and paste the endpoint URL here to enable email delivery.</p>
+                  <Editable section="contact" field="formspreeEndpoint" placeholder="https://formspree.io/f/..." />
+                </div>
               </div>
             )}
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="space-y-4 text-left">
+          <form 
+            onSubmit={handleSubmit} 
+            action={contact.formspreeEndpoint && !contact.formspreeEndpoint.includes("YOUR_ENDPOINT_HERE") ? contact.formspreeEndpoint : undefined}
+            method="POST"
+            className="space-y-4 text-left"
+          >
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-muted mb-1">Name</label>
-              <input type="text" id="name" required className="w-full bg-card border border-white/10 rounded-lg px-4 py-3 text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="John Doe" disabled={isEditing} />
+              <input type="text" id="name" name="name" required className="w-full bg-card border border-white/10 rounded-lg px-4 py-3 text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="John Doe" disabled={isEditing} />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-muted mb-1">Email</label>
-              <input type="email" id="email" required className="w-full bg-card border border-white/10 rounded-lg px-4 py-3 text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="john@example.com" disabled={isEditing} />
+              <input type="email" id="email" name="email" required className="w-full bg-card border border-white/10 rounded-lg px-4 py-3 text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" placeholder="john@example.com" disabled={isEditing} />
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-muted mb-1">Message</label>
-              <textarea id="message" required rows="4" className="w-full bg-card border border-white/10 rounded-lg px-4 py-3 text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none" placeholder="Hello..." disabled={isEditing}></textarea>
+              <textarea id="message" name="message" required rows="4" className="w-full bg-card border border-white/10 rounded-lg px-4 py-3 text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none" placeholder="Hello..." disabled={isEditing}></textarea>
             </div>
             <button type="submit" disabled={isEditing} className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-accent text-bg font-semibold rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50">
               Send Message
